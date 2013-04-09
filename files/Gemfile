@@ -1,0 +1,160 @@
+source 'https://rubygems.org'
+
+ruby '1.9.3'
+gem 'rails', '3.2.11'
+
+gem 'thin'
+
+# Gems used only for assets and not required
+# in production environments by default.
+group :assets do
+  gem 'sass-rails',   '~> 3.2.3'
+  gem 'coffee-rails', '~> 3.2.1'
+
+  gem 'uglifier', '>= 1.0.3'
+
+  gem 'bootstrap-sass'
+end
+
+#################################
+# Back end
+#################################
+# DB
+gem 'bson_ext'
+gem 'json'
+gem 'mongoid'
+gem 'mongoid-history', :git => 'git://github.com/aq1018/mongoid-history.git'
+gem "mongo_session_store-rails3", :git => 'git://github.com/brianhempel/mongo_session_store.git', :branch => 'master'
+
+# Validation
+gem 'validates_timeliness'
+
+# Authorization
+gem 'cancan'
+gem 'rolify'
+
+# Authentication
+gem 'sorcery'
+
+# File uploading
+gem 'carrierwave', :git => 'git://github.com/jnicklas/carrierwave.git', :branch => 'master'
+gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
+gem 'mini_magick', '~> 3.4'
+gem 'fog'
+gem 'cloudfiles'
+
+# State machine
+gem 'ffi'
+gem 'state_machine', :git => 'git://github.com/pluginaweek/state_machine.git'
+gem 'ruby-graphviz', :require => 'graphviz'
+
+# Money/Currency
+gem 'money'
+
+#################################
+# Scalability/Business
+#################################
+# Monitoring
+gem 'newrelic_rpm'
+gem 'km'
+
+# Exception notifier
+gem 'exceptional'
+
+# Email
+gem 'hominid'
+
+# User Feedback/Support
+gem 'ezcrypto' # Uservoice dependencies
+
+
+#################################
+# Front End/UI
+#################################
+gem 'slim'
+
+gem 'jquery-rails'
+
+gem 'kaminari'
+gem 'httparty'
+
+# Autocomplete text field
+gem 'rails3-jquery-autocomplete'
+
+# Forms
+gem 'simple_form'
+
+# Client side validations
+gem 'client_side_validations'
+gem 'client_side_validations-simple_form'
+gem 'client_side_validations-mongoid'
+
+gem 'rails-boilerplate'
+
+# Static pages
+gem 'high_voltage'
+
+# Mailchimp Integration
+gem 'gibbon'
+
+# Markdown
+gem 'redcarpet'
+
+#################################
+# Other
+#################################
+# timeout gem to help on heroku
+gem 'SystemTimer', :require => 'system_timer', :platforms => :ruby_18
+gem 'rack-timeout'
+
+# url shortner
+gem 'bitly'
+
+# follow
+gem 'acts_as_follower'
+
+group :development, :test do
+  # Server
+  gem 'thin'
+
+  # Testing
+  gem 'rspec-rails',        :git => 'git://github.com/rspec/rspec-rails.git'
+  gem 'rspec',              :git => 'git://github.com/rspec/rspec.git'
+  gem 'rspec-core',         :git => 'git://github.com/rspec/rspec-core.git'
+  gem 'rspec-expectations', :git => 'git://github.com/rspec/rspec-expectations.git'
+  gem 'rspec-mocks',        :git => 'git://github.com/rspec/rspec-mocks.git'
+  gem 'autotest'
+
+  gem 'capybara', :git => 'git://github.com/jnicklas/capybara'
+
+  # heroku and multi env deployment
+  gem 'heroku_san'
+
+  gem 'mongoid-rspec'
+
+  gem 'tddium'
+end
+
+group :development do
+  gem 'tunnlr_connector', :require => 'tunnlr'
+  gem 'mailcatcher'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'meta_request'
+end
+
+group :test do
+  gem 'cucumber-rails', :require => false
+  # database_cleaner is not required, but highly recommended
+  gem 'database_cleaner'
+
+  gem 'fabrication'
+  gem 'spork'
+  gem 'launchy'   # So you can do Then show me the page
+
+  gem 'email_spec'
+end
+
+group :production do
+  gem 'unicorn'
+end
